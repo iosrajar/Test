@@ -1,4 +1,4 @@
-# ACCENTURE TEST for 5 Days Weather Forcast with sing  sample data from Openweather API
+# ACCENTURE TEST for 5 Days Weather Forcast with sample data from Openweather API
 Downalod the Code
 Open the code in latest XCODE version.
 You can run the code in Simulator which will install and run the APP.
