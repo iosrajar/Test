@@ -1,18 +1,83 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13142" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12042"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="HourlyCell" customModule="AccTest" customModuleProvider="target"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view contentMode="scaleToFill" id="iN0-l3-epB">
-            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+        <view contentMode="scaleToFill" id="auf-W0-99h" customClass="HourlyCell" customModule="AccTest" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="110" height="75"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="12:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="47P-Wj-5Jb">
+                    <rect key="frame" x="39.5" y="1" width="31" height="14.5"/>
+                    <fontDescription key="fontDescription" type="system" weight="light" pointSize="12"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Singapore" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Loj-f9-AhJ">
+                    <rect key="frame" x="3" y="16" width="104" height="13.5"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="Loj-f9-AhJ" secondAttribute="height" multiplier="23:3" id="BI7-fz-Ll1"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="11"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="16 C" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rqR-BL-0Ru">
+                    <rect key="frame" x="17" y="33.5" width="75" height="22.5"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="rqR-BL-0Ru" secondAttribute="height" multiplier="10:3" id="xlF-vF-ktt"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="10"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="12 C" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U6f-wE-h9w">
+                    <rect key="frame" x="3" y="57" width="22.5" height="13.5"/>
+                    <fontDescription key="fontDescription" type="system" weight="light" pointSize="11"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="24 C" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JQ7-47-NJz">
+                    <rect key="frame" x="82" y="57" width="24.5" height="13.5"/>
+                    <fontDescription key="fontDescription" type="system" weight="light" pointSize="11"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="JQ7-47-NJz" secondAttribute="trailing" constant="3.5" id="72d-TP-XVz"/>
+                <constraint firstItem="rqR-BL-0Ru" firstAttribute="leading" secondItem="5I1-CN-HrH" secondAttribute="leading" constant="17" id="742-pU-lgr"/>
+                <constraint firstItem="5I1-CN-HrH" firstAttribute="trailing" secondItem="rqR-BL-0Ru" secondAttribute="trailing" constant="18" id="AQi-Rs-02E"/>
+                <constraint firstItem="Loj-f9-AhJ" firstAttribute="top" secondItem="47P-Wj-5Jb" secondAttribute="bottom" constant="0.5" id="KfM-Bg-2fg"/>
+                <constraint firstAttribute="bottom" secondItem="U6f-wE-h9w" secondAttribute="bottom" constant="4.5" id="Oam-Jf-nLK"/>
+                <constraint firstItem="rqR-BL-0Ru" firstAttribute="top" secondItem="Loj-f9-AhJ" secondAttribute="bottom" constant="4" id="OsF-G6-jif"/>
+                <constraint firstItem="47P-Wj-5Jb" firstAttribute="top" secondItem="auf-W0-99h" secondAttribute="top" constant="1" id="WNZ-HO-9da"/>
+                <constraint firstItem="U6f-wE-h9w" firstAttribute="leading" secondItem="auf-W0-99h" secondAttribute="leading" constant="3" id="XZQ-fE-JUy"/>
+                <constraint firstItem="47P-Wj-5Jb" firstAttribute="centerX" secondItem="auf-W0-99h" secondAttribute="centerX" id="iPd-XW-4vc"/>
+                <constraint firstItem="Loj-f9-AhJ" firstAttribute="leading" secondItem="5I1-CN-HrH" secondAttribute="leading" constant="3" id="up7-YS-As4"/>
+                <constraint firstItem="5I1-CN-HrH" firstAttribute="trailing" secondItem="Loj-f9-AhJ" secondAttribute="trailing" constant="3" id="wHd-3X-UbC"/>
+                <constraint firstAttribute="bottom" secondItem="JQ7-47-NJz" secondAttribute="bottom" constant="4.5" id="zNU-5P-zus"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="5I1-CN-HrH"/>
+            <connections>
+                <outlet property="DescriptionLabel" destination="Loj-f9-AhJ" id="sOZ-vc-psf"/>
+                <outlet property="hourLabel" destination="47P-Wj-5Jb" id="PWt-p3-ILa"/>
+                <outlet property="maxTemperatureLabel" destination="JQ7-47-NJz" id="xBI-RD-KRQ"/>
+                <outlet property="minTemperatureLabel" destination="U6f-wE-h9w" id="7Iw-cH-On9"/>
+                <outlet property="temperatureLabel" destination="rqR-BL-0Ru" id="wQv-b8-8Bv"/>
+            </connections>
+            <point key="canvasLocation" x="-212" y="-470.01499250374815"/>
         </view>
     </objects>
 </document>

@@ -15,7 +15,7 @@ class ServerAPI {
     private let APIKey = "f40583ca2a0d75901cc196ae9e5f9e01"
     private var info:Any = ""
     
-    func getWeather(lat: Double, lon:Double) {
+    func getWeather(lat: Double, lon:Double,completionHandler: @escaping (Int?, Error?) -> Void) {
         
         let session = URLSession.shared
         let weatherRequestURL = URL(string: "\(openWeatherURL)?lat=\(lat)&lon=\(lon)&APPID=\(APIKey)")!
@@ -31,17 +31,12 @@ class ServerAPI {
                             with: usableData,
                             options: .mutableContainers) as! [String: AnyObject]
                         let listarr:NSDictionary = weather["list"]![0]! as! NSDictionary
-                        print("Date and time: \(listarr["dt_txt"]!)")
-                        
-//                        let jsonSerialized = try JSONSerialization.jsonObject(with: usableData, options: []) as? [String : Any]
-//                        self.info = jsonSerialized
-//                        //completion(info)
-//                        let dicjson = jsonSerialized!
-//                        let listarr:NSArray = dicjson["list"]! as! NSArray
-//                        let firarr = listarr[0]
-//                        print(firarr["dt_txt"]! as String)
+                        let weatherdatas = ServerAPI.parseWeatherData(json: weather)
+                        WeatherState.sharedInstance.weatherdatas = weatherdatas
+                        completionHandler(200, nil)
+                        //print("Date and time: \(listarr["dt_txt"]!)")
                     } catch {
-                        print("didnt work")
+                        completionHandler(-1, error)
                     }
                 }
             }
@@ -49,4 +44,37 @@ class ServerAPI {
         
         task.resume()
     }
+    
+
+    
+    
+    class func parseWeatherData(json: Any) -> [weatherdata] {
+        var weatherDataPoints: [weatherdata] = []
+        
+        if let dict = json as? NSDictionary {
+            
+            if let list = dict["list"] as? [[String:AnyObject]] {
+                
+                for a in list {
+                    let weather = weatherdata()
+                    
+                    let main = a["main"] as? [String:AnyObject]
+                    let weatherInfo = a["weather"] as? [[String:AnyObject]]
+                    
+                    weather.dt = a["dt"] as? Int
+                    weather.Tempr = Float(main!["temp"] as! Double)
+                    weather.minTemp = Float(main!["temp_min"] as! Double)
+                    weather.maxTemp = Float(main!["temp_max"] as! Double) 
+                    if (weatherInfo != nil && weatherInfo!.count > 0) {
+                        weather.weatherDesc = weatherInfo?[0]["description"] as? String
+                    }
+                    weatherDataPoints.append(weather)
+                }
+            }
+            
+        }
+        
+        return weatherDataPoints
+    }
+    
 }

@@ -10,9 +10,9 @@ import UIKit
 class WeatherFrameVC: UITableViewCell {
 
     @IBOutlet weak var dttxt: UILabel!
-    @IBOutlet weak var weasttxt: UILabel!
-    @IBOutlet weak var collview: UICollectionView!
+    @IBOutlet weak var cview: UICollectionView!
     
+    var weatherdatasHr: [weatherdata] = []
     
     var datetext = ""
     
@@ -25,7 +25,7 @@ class WeatherFrameVC: UITableViewCell {
     }
     override func awakeFromNib() {
         super.awakeFromNib()
-        
+        self.setup()
     }
     
     func setDate(txtstr: String) {
@@ -34,29 +34,39 @@ class WeatherFrameVC: UITableViewCell {
             self.dttxt.text = self.datetext
         }
     }
+    func setup() {
+        let nibName = UINib(nibName: "HourlyCell", bundle: nil)
+        cview.register(nibName, forCellWithReuseIdentifier: "HourlyCell")
+    }
+    
+    func setWeatherData(weatherdatas: [weatherdata]) {
+        self.weatherdatasHr = weatherdatas
+        cview.reloadData()
+        
+        if (weatherdatas.count > 0) {
+            dttxt.text = weatherdatas[0].dateString(format: "EEEE, MMM d, yyyy")
+        }
+    }
     
 }
 
 
-extension WeatherFrameVC:UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
-    
-     
-    
+extension WeatherFrameVC:UICollectionViewDelegate, UICollectionViewDataSource {
+
+
+
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "SampleViewCell", for: indexPath) as! SampleViewCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "HourlyCell", for: indexPath) as! HourlyCell
         
-        let weatherSample = weatherSamples[indexPath.row]
-        cell.setWeatherSample(weatherSample: weatherSample)
+        let weatherHourly = self.weatherdatasHr[indexPath.row]
+        cell.setWeatherdata(weatherData: weatherHourly)
         
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return weatherSamples.count
+        return weatherdatasHr.count
     }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: 150, height: collectionView.bounds.height)
-    }
+
 }
 
